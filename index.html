@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./styles.css">
-        
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
     </head> 
     <body>
         <div class="container">
             <div >
-                <h1 class = "header_text">Do you wanna go out with me?</h1>
-                <h1 class = "header_text">Are you free tommorow?</h1>
+                <h1 class = "header_text_one">In a world full of stars, you are my brightest one. Will you be the story I write, the dream I live, and the forever I cherish? </h1>
+                <h1 class = "header_text">Will you be mine, today and always?</h1>
             </div>
             <div class="gif_container">
                 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
@@ -29,6 +29,24 @@
                     }
                 </script> 
             </div>
+            <button onclick="sendEmail()">Send Email</button> <!-- Button to trigger email sending -->
+
+        <script>
+            function sendEmail() {
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "doradorji@gmail.com",
+                    Password: "FFA400B3DC7A16BA1A7CAFA6AAB25229DF2B",
+                    From: 'doraugyendorji@gmail.com',
+                    To: "doraugyendorji@gmail.com",
+                    Subject: "Test Email",
+                    Body: "This is a test email sent using SMTP.js"
+                })
+                .then(function (message) {
+                    alert("Mail sent successfully") // Alert message on successful email delivery
+                });
+            }
+        </script>
         </div>
        
     </body> 

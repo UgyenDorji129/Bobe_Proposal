@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <h2>Send a Romantic Proposal Email</h2>
+    <form id="emailForm">
+        <label for="to_name">Recipient's Name:</label>
+        <input type="text" id="to_name" name="to_name" required><br><br>
+        
+        <label for="to_email">Recipient's Email:</label>
+        <input type="email" id="to_email" name="to_email" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required>Your proposal message here...</textarea><br><br>
+        
+        <button type="button" onclick="sendEmail()">Send Proposal</button>
+    </form>
+
+    <script>
+        // Initialize EmailJS with your User ID
+        (function() {
+            emailjs.init("eDh-IRvszKeCLCH76");
+        })();
+
+        function sendEmail() {
+            const serviceID = "service_u7lonnv";
+            const templateID = "template_w8hltch";
+
+            const templateParams = {
+                to_name: document.getElementById("to_name").value,
+                to_email: document.getElementById("to_email").value,
+                message: document.getElementById("message").value
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    alert("Email sent successfully!");
+                }, function(error) {
+                    alert("Failed to send email: " + error);
+                });
+        }
+    </script>
+</body>
+</html>
