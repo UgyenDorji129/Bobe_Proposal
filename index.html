@@ -32,20 +32,28 @@
             <button onclick="sendEmail()">Send Email</button> <!-- Button to trigger email sending -->
 
         <script>
+            (function() {
+                emailjs.init("eDh-IRvszKeCLCH76");
+            })();
+
             function sendEmail() {
-                Email.send({
-                    Host: "smtp.elasticemail.com",
-                    Username: "doradorji@gmail.com",
-                    Password: "FFA400B3DC7A16BA1A7CAFA6AAB25229DF2B",
-                    From: 'doraugyendorji@gmail.com',
-                    To: "doraugyendorji@gmail.com",
-                    Subject: "Test Email",
-                    Body: "This is a test email sent using SMTP.js"
-                })
-                .then(function (message) {
-                    alert("Mail sent successfully") // Alert message on successful email delivery
+            const serviceID = "service_u7lonnv";
+            const templateID = "template_w8hltch";
+
+
+            const templateParams = {
+                to_name: "Bo Be",
+                to_email: "ugyendora@gmail.com",
+                message: "Sending message"
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    alert("Email sent successfully!");
+                }, function(error) {
+                    alert("Failed to send email: " + error);
                 });
-            }
+        }
         </script>
         </div>
        
