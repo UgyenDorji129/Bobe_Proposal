@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./styles.css">
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     </head> 
     <body>
         <div class="container">
@@ -14,11 +14,32 @@
                 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
             </div>
             <div class = "buttons">
-                <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
+                <button class="btn" id = "yesButton" onclick="sendEmail()">Yes</button>
                 <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
                 <script>
                     function nextPage() {
                         window.location.href = "yes.html";
+                    }
+
+                    (function() {
+                        emailjs.init("eDh-IRvszKeCLCH76");
+                    })();
+
+                    function sendEmail() {
+                    const serviceID = "service_u7lonnv";
+                    const templateID = "template_w8hltch";
+
+
+                    const templateParams = {
+                        to_name: "Bo Be",
+                        to_email: "ugyendora@gmail.com",
+                        message: "Sending message"
+                    };
+
+                    emailjs.send(serviceID, templateID, templateParams)
+                    alert("Hey, beautiful! 🌹 Could you please check your email? There's something special waiting for you ❤️");
+                    nextPage();
+                        
                     }
                     
                     function moveButton() {
@@ -27,34 +48,9 @@
                         document.getElementById('noButton').style.left = `${x}px`;
                         document.getElementById('noButton').style.top = `${y}px`;
                     }
+
                 </script> 
             </div>
-            <button onclick="sendEmail()">Send Email</button> <!-- Button to trigger email sending -->
-
-        <script>
-            (function() {
-                emailjs.init("eDh-IRvszKeCLCH76");
-            })();
-
-            function sendEmail() {
-            const serviceID = "service_u7lonnv";
-            const templateID = "template_w8hltch";
-
-
-            const templateParams = {
-                to_name: "Bo Be",
-                to_email: "ugyendora@gmail.com",
-                message: "Sending message"
-            };
-
-            emailjs.send(serviceID, templateID, templateParams)
-                .then(function(response) {
-                    alert("Email sent successfully!");
-                }, function(error) {
-                    alert("Failed to send email: " + error);
-                });
-        }
-        </script>
         </div>
        
     </body> 
